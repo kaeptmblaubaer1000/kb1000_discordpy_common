@@ -12,4 +12,5 @@ setup(
     author="kb1000",
     packages=["kb1000_discordpy_common"],
     license="Apache-2.0",
+    url="https://github.com/kaeptmblaubaer1000/kb1000_discordpy_common",
 )
