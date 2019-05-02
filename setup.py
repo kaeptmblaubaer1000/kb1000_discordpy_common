@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="kb1000_discordpy_common",
-    version="1.0",
+    version="1.1",
     install_requires=[
             "discord.py>=1.0.0a1691"
     ],
