@@ -1,6 +1,9 @@
 import asyncio
 import functools
 import logging
+import discord
+import os
+from discord.ext import commands
 
 logger = logging.getLogger(__name__)
 
@@ -50,6 +53,30 @@ async def on_guild_leave(guild):
     guild_leave_logger.info(str(guild))
 
 
+class InviteCog(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+        bot.loop.create_task(self.prepare())
+
+    @force_async
+    async def prepare(self):
+        await self.bot.wait_until_ready()
+        with open("bot_url.txt", "rt", encoding="utf-8") as fp:
+            self.invite_text = f"Invite for {self.bot.user.name}:\n{fp.read()}"
+
+    @commands.command()
+    @force_async
+    async def invite(self, ctx):
+        try:
+            await ctx.author.send(self.invite_text)
+        except discord.Forbidden:
+            await ctx.send("You don't want an invite! Couldn't send you a DM")
+        else:
+            await ctx.send("You got a bot invite!")
+
+
 def setup(bot):
     bot.event(on_guild_join)
     bot.event(on_guild_leave)
+    if os.path.isfile("bot_url.txt"):
+        bot.add_cog(InviteCog(bot))
