@@ -54,6 +54,7 @@ async def on_guild_leave(guild):
 
 
 class InviteCog(commands.Cog):
+    bot: commands.Bot
     def __init__(self, bot):
         self.bot = bot
         bot.loop.create_task(self.prepare())
@@ -72,7 +73,8 @@ class InviteCog(commands.Cog):
         except discord.Forbidden:
             await ctx.send("You don't want an invite! Couldn't send you a DM")
         else:
-            await ctx.send("You got a bot invite!")
+            if getattr(self.bot, "gitgud"):
+                await ctx.send("You got a bot invite!")
 
 
 def setup(bot):

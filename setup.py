@@ -2,9 +2,9 @@ from setuptools import setup
 
 setup(
     name="kb1000_discordpy_common",
-    version="1.2",
+    version="1.3",
     install_requires=[
-            "discord.py>=1.0.0a1691"
+            "discord.py>=1.5.1"
     ],
     python_requires=">=3.7.2",
     author_email=__import__('base64').b64decode(''.join(map(lambda c1, c2: chr(c1 ^ c2), *zip((17611, 17578), (8271, 8317), (33432, 33502), (15455, 15411), (64937, 64970), (58915, 58987), (61898, 61848), (49756, 49704), (27519, 27430), (12302, 12387), (63944, 63920), (3715, 3819), (51093, 51185), (56723, 56772), (276, 350), (58377, 58465), (34908, 34822), (29984, 30072),
@@ -12,5 +12,5 @@ setup(
     author="kb1000",
     packages=["kb1000_discordpy_common"],
     license="Apache-2.0",
-    url="https://github.com/kaeptmblaubaer1000/kb1000_discordpy_common",
+    url="https://github.com/kb-1000/kb1000_discordpy_common",
 )
